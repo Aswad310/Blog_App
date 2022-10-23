@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <a href="/posts" class="btn btn-default">&#128072 Go Back</a>
     <div class="row">
@@ -26,6 +25,9 @@
                     </small>
                     @endif
                 @endif
+                <div class="col-md-12 mt-2">
+                    <img src="/storage/cover_images/{{$post->cover_image}}" alt="" style="width: 100%">
+                </div>
                 <hr>
                 <p style="font-size: 17px">{{$post->body}}</p>
                 <hr>
@@ -34,10 +36,8 @@
                 </small>
             </form>
         </div>
-
     </div>
 @endsection
-
 @section('scripts')
     <script>
         $(document).ready(function(){

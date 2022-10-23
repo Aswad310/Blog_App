@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <a href="/posts/{{$posts->id}}" class="btn btn-default">&#128072 Go Back</a>
-    <form method="POST" action="/posts/{{$posts->id}}">
+    <form method="POST" action="/posts/{{$posts->id}}" enctype="multipart/form-data">
         @method('PUT')
         @csrf
         <div class="row">
@@ -47,14 +47,19 @@
                     @enderror
                 </div>
 
-                {{--                <div class="row">--}}
-                {{--                    <label for="image" class="col-md-4 col-form-label">Post Image</label>--}}
-                {{--                    <input type="file" class="form-control" id="image" name="image">--}}
+                <div class="row mt-4">
+                    <label class="mb-2"><b>Current Blog Cover</b></label>
+                    <img src="/storage/cover_images/{{$posts->cover_image}}" alt="{{$posts->cover_image}}" style="width: 60%">
+                </div>
 
-                {{--                    @error('image')--}}
-                {{--                    <strong>{{ $message }}</strong>--}}
-                {{--                    @enderror--}}
-                {{--                </div>--}}
+                <div class="row mt-3">
+                    <label for="cover_image" class="col-md-4 col-form-label"></label>
+                    <input type="file" class="form-control" id="cover_image" name="cover_image">
+
+                    @error('cover_image')
+                    <strong>{{ $message }}</strong>
+                    @enderror
+                </div>
 
                 <div class="row pt-4">
                     <button type="submit" class="btn btn-primary update-alert">Update Blog</button>
